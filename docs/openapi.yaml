@@ -1,0 +1,160 @@
+openapi: 3.0.3
+info:
+  title: API Biblioteca de Mangás
+  description: API de domínio único para gerenciamento de leitura e coleção de mangás (Projeto B).
+  version: 1.0.0
+paths:
+  /health:
+    get:
+      summary: Health check da aplicação
+      responses:
+        '200':
+          description: Aplicação operacional
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "UP"
+
+  /mangas:
+    get:
+      summary: Lista todos os mangás cadastrados
+      responses:
+        '200':
+          description: Lista de mangás retornada com sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Manga'
+    post:
+      summary: Cadastra um novo mangá na biblioteca
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMangaInput'
+      responses:
+        '201':
+          description: Mangá criado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Manga'
+        '400':
+          description: Dados inválidos fornecidos
+
+  /mangas/{id}:
+    get:
+      summary: Busca um mangá específico pelo ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Mangá encontrado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Manga'
+        '404':
+          description: Mangá não encontrado
+    put:
+      summary: Atualiza os dados de um mangá existente
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateMangaInput'
+      responses:
+        '200':
+          description: Mangá atualizado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Manga'
+        '400':
+          description: Dados inválidos
+        '404':
+          description: Mangá não encontrado
+    delete:
+      summary: Remove um mangá da biblioteca
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Mangá deletado com sucesso (sem conteúdo)
+        '404':
+          description: Mangá não encontrado
+
+components:
+  schemas:
+    Manga:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+          example: "One Piece"
+        author:
+          type: string
+          example: "Eiichiro Oda"
+        chapters:
+          type: integer
+          example: 1100
+        status:
+          type: string
+          enum: [reading, completed, plan_to_read]
+          example: "reading"
+    CreateMangaInput:
+      type: object
+      required:
+        - title
+        - author
+        - chapters
+      properties:
+        title:
+          type: string
+        author:
+          type: string
+        chapters:
+          type: integer
+        status:
+          type: string
+          enum: [reading, completed, plan_to_read]
+    UpdateMangaInput:
+      type: object
+      properties:
+        title:
+          type: string
+        author:
+          type: string
+        chapters:
+          type: integer
+        status:
+          type: string
+          enum: [reading, completed, plan_to_read]

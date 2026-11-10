@@ -1,0 +1,20 @@
+# Dependências
+node_modules/
+
+# Variáveis de ambiente e segredos locais
+.env
+
+# Build e arquivos compilados
+dist/
+build/
+
+# Relatórios de cobertura de testes (Vitest)
+coverage/
+
+# Logs de execução
+*.log
+npm-debug.log*
+
+# Arquivos do Sistema Operacional
+.DS_Store
+Thumbs.db
