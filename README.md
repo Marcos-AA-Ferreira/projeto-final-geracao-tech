@@ -2,9 +2,9 @@
 
 API REST desenvolvida em **TypeScript** (Node.js) para gerenciamento completo (CRUD) de bibliotecas pessoais de mangás. O projeto segue os princípios **SOLID** (*Repository Pattern*), é conteinerizado via **Docker** e possui pipeline de CI/CD automatizado.
 
-[![CI Pipeline]()]()
+[![CI Pipeline](https://github.com/Marcos-AA-Ferreira/projeto-final-geracao-tech/actions/workflows/ci.yml/badge.svg)](https://github.com/Marcos-AA-Ferreira/projeto-final-geracao-tech/actions/workflows/ci.yml)
 
-> 🔗 **Link do CI Verde:** [Execuções do GitHub Actions]()
+> 🔗 **Link do CI Verde:** [Execuções do GitHub Actions](https://github.com/Marcos-AA-Ferreira/projeto-final-geracao-tech/actions)
 
 ---
 
