@@ -3,6 +3,7 @@ node_modules/
 
 # Variáveis de ambiente e segredos locais
 .env
+index.html
 
 # Build e arquivos compilados
 dist/
