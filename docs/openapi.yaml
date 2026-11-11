@@ -128,8 +128,8 @@ components:
           example: 1100
         status:
           type: string
-          enum: [reading, completed, plan_to_read]
-          example: "reading"
+          enum: ['Lendo', 'Completo', 'Eu planejo ler', 'interrompido']
+          example: "Lendo"
     CreateMangaInput:
       type: object
       required:
@@ -145,7 +145,7 @@ components:
           type: integer
         status:
           type: string
-          enum: [reading, completed, plan_to_read]
+          enum: ['Lendo', 'Completo', 'Eu planejo ler', 'interrompido']
     UpdateMangaInput:
       type: object
       properties:
@@ -157,4 +157,4 @@ components:
           type: integer
         status:
           type: string
-          enum: [reading, completed, plan_to_read]
+          enum: ['Lendo', 'Completo', 'Eu planejo ler', 'interrompido']
